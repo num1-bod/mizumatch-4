@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+/* 1. ページ全体のスムーズスクロール設定 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 2. ボタンを中央に配置するための外枠 */
+.back-to-top-container {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* 横方向の中央揃え */
+  align-items: center;
+  padding: 40px 0;         /* 前後の余白 */
+}
+
+/* 3. ボタン本体のスタイル（色反転バージョン） */
+.back-to-top-static {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 240px;            /* テキストに合わせて幅を調整 */
+  padding: 12px 0;
+  
+  /* 色の反転設定 */
+  background-color: #ffffff; /* 背景を白に */
+  color: #1F5199;            /* 文字をメインの青に */
+  border: 2px solid #1F5199; /* 枠線をメインの青に */
+  
+  text-decoration: none;
+  border-radius: 30px;     /* 角丸（カプセル型） */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* テキスト部分 */
+.back-to-top-static .text {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* 4. ホバー（マウスを乗せた時）の演出 */
+.back-to-top-static:hover {
+  /* ホバー時はさらに反転させて、元の青背景にする */
+  background-color: #1F5199;
+  color: #ffffff;
+  transform: translateY(-3px); /* 軽く浮き上がる */
+  box-shadow: 0 6px 15px rgba(31, 81, 153, 0.3);
+}
+
+/* スマホ表示での微調整 */
+@media screen and (max-width: 600px) {
+  .back-to-top-container {
+    padding: 30px 0;
+  }
+  .back-to-top-static {
+    width: 200px;
+    padding: 10px 0;
+  }
+  .back-to-top-static .text {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+/* 1. サイト全体の基本設定（ご提示いただいたもの） */
+body {
+  font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+  background-color: #E5ECF2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. フォーム要素などのフォント崩れ防止（推奨） */
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+
+.sp-event-1 .se1-val {
+  font-weight: 400; /* ここで「太字ではない」設定が活きます */
+}

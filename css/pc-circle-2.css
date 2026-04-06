@@ -1,0 +1,113 @@
+/* ======================================================
+   pc-circle-2 カスタマイズ設定
+   ====================================================== */
+:root {
+  /* セクション全体の余白調整 */
+  --pc2-padding-top: 0px;        /* 上の余白 */
+  --pc2-padding-bottom: 60px;     /* 下の余白 */
+  --pc2-side-padding: 24px;       /* 左右の余白 */
+  --pc2-gap: 50px;                /* テキストと画像の間隔 */
+
+  /* キャッチコピー（青文字）の設定 */
+  --pc2-accent-blue: #1F5199;
+  --pc2-copy-size: 30px;
+  --pc2-copy-weight: 800;
+  --pc2-copy-margin-btm: 24px;
+
+  /* 本文の設定 */
+  --pc2-main-text-color: #333333;
+  --pc2-body-size: 1rem;
+  --pc2-body-line-height: 1.8;
+}
+
+/* ======================================================
+   構造（PCレイアウト）
+   ====================================================== */
+
+.pc-circle-2 {
+  width: 100%;
+  background-color: transparent;
+  padding-top: var(--pc2-padding-top);
+  padding-bottom: var(--pc2-padding-bottom);
+  box-sizing: border-box;
+}
+
+.pc-circle-2 .pc2-wrapper {
+  max-width: 1200px; /* 全体の最大幅 */
+  margin: 0 auto;
+  padding: 0 var(--pc2-side-padding);
+  box-sizing: border-box;
+  
+  /* 横並びの設定 */
+  display: flex;
+  align-items: center; /* 上下中央揃え */
+  justify-content: space-between;
+  gap: var(--pc2-gap);
+}
+
+/* 比率 2:1 の設定 */
+.pc-circle-2 .pc2-content-area {
+  flex: 2; /* 左側を「2」の比率に */
+}
+
+.pc-circle-2 .pc2-image-area {
+  flex: 1; /* 右側を「1」の比率に */
+  min-width: 280px; /* 画像が潰れすぎないための最小幅 */
+}
+
+/* 画像のスタイリング */
+.pc-circle-2 .pc2-image-area img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px; /* 角丸（不要なら0pxに） */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* 軽い影 */
+}
+
+/* ======================================================
+   テキスト要素
+   ====================================================== */
+
+/* 上部の青文字メッセージ */
+.pc-circle-2 .pc2-message-top {
+  margin-bottom: var(--pc2-copy-margin-btm);
+}
+
+.pc-circle-2 .pc2-message-top p {
+  color: var(--pc2-accent-blue);
+  font-size: var(--pc2-copy-size);
+  font-weight: var(--pc2-copy-weight);
+  margin: 0 0 10px 0;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+/* 下部の本文 */
+.pc-circle-2 .pc2-message-body p {
+  color: var(--pc2-main-text-color);
+  font-size: var(--pc2-body-size);
+  line-height: var(--pc2-body-line-height);
+  margin: 0;
+  text-align: justify;
+  font-weight: 500;
+}
+
+/* ======================================================
+   レスポンシブ（タブレット・スマホ対応）
+   ====================================================== */
+@media (max-width: 900px) {
+  .pc-circle-2 .pc2-wrapper {
+    flex-direction: column; /* 縦並びに変更 */
+    gap: 30px;
+  }
+
+  .pc-circle-2 .pc2-content-area,
+  .pc-circle-2 .pc2-image-area {
+    flex: none;
+    width: 100%; /* 横幅いっぱいに広げる */
+  }
+
+  .pc-circle-2 .pc2-message-top p {
+    font-size: 24px; /* スマホでは少し文字を小さく */
+  }
+}

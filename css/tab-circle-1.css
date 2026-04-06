@@ -1,0 +1,126 @@
+/* ======================================================
+   tab-circle-1 カスタマイズ設定
+   ====================================================== */
+:root {
+  --tc1-bg-color: transparent;    /* セクション背景をなしに */
+  --tc1-main-text: #111111;
+  --tc1-sub-text: #555555;
+  --tc1-accent-color: #1F5199;    /* 指定の青色に変更 */
+  
+  --tc1-img-radius: 12px;
+  --tc1-img-side-gap: 15px;
+  
+  --tc1-line-color: #eeeeee;      /* 境界線の色 */
+  --tc1-member-bg: transparent;   /* 人数エリアの背景もなしに */
+}
+
+.tab-circle-1 {
+  width: 100%;
+  background-color: var(--tc1-bg-color);
+  padding: 10px 0 50px 0;
+}
+
+.tab-circle-1 .tc1-wrapper {
+  width: 100%;
+}
+
+/* 画像エリア */
+.tab-circle-1 .tc1-visual-box {
+  width: 100%;
+  padding: 0 var(--tc1-img-side-gap);
+  box-sizing: border-box;
+  margin-bottom: 25px;
+}
+
+.tab-circle-1 .tc1-visual-box img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--tc1-img-radius);
+  border: none !important;
+}
+
+/* テキストエリア */
+.tab-circle-1 .tc1-content-body {
+  padding: 0 24px;
+  text-align: left;
+}
+
+/* 創立・公認情報 */
+.tab-circle-1 .tc1-profile-intro {
+  margin-bottom: 15px;
+}
+
+.tab-circle-1 .tc1-found-date {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 2px 0;
+  color: var(--tc1-main-text);
+}
+
+.tab-circle-1 .tc1-official-tag {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--tc1-accent-color); /* 指定の青色 */
+  margin: 0;
+}
+
+/* 活動概要 */
+.tab-circle-1 .tc1-description {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--tc1-sub-text);
+  margin-bottom: 30px;
+}
+
+/* 活動人数エリア：背景なし・線のみのミニマルスタイル */
+.tab-circle-1 .tc1-member-box {
+  background-color: var(--tc1-member-bg);
+  border-top: 1px solid var(--tc1-line-color);
+  padding-top: 20px;
+}
+
+.tab-circle-1 .tc1-member-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--tc1-sub-text);
+  margin: 0 0 15px 0;
+}
+
+.tab-circle-1 .tc1-member-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 25px; /* 要素間の間隔 */
+}
+
+.tab-circle-1 .tc1-member-item,
+.tab-circle-1 .tc1-total-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* すべて左揃えに統一 */
+}
+
+.tab-circle-1 .tc1-grade {
+  font-size: 0.75rem;
+  color: var(--tc1-sub-text);
+  margin-bottom: 2px;
+}
+
+.tab-circle-1 .tc1-count {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--tc1-main-text);
+}
+
+.tab-circle-1 .tc1-count small {
+  font-size: 0.7rem;
+  font-weight: 500;
+  margin-left: 1px;
+}
+
+/* 合計人数だけ青色で強調 */
+.tab-circle-1 .tc1-total-item .tc1-count {
+  color: var(--tc1-accent-color);
+}
