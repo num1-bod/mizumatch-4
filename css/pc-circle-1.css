@@ -1,0 +1,159 @@
+/* ======================================================
+   pc-circle-1 カスタマイズ設定（4:1 比率 & サイズ変数化）
+   ====================================================== */
+:root {
+  /* --- カラー・基本設定 --- */
+  --pc1-bg-color: transparent;
+  --pc1-main-text: #111111;
+  --pc1-sub-text: #555555;
+  --pc1-accent-color: #1F5199;
+  --pc1-line-color: #eeeeee;
+  --pc1-img-radius: 12px;
+  --pc1-img-side-gap: 15px;
+
+  /* --- 【サイズ調整エリア】ここを変更してください --- */
+  --pc1-font-found: 22px;    /* 「〜創立」のサイズ */
+  --pc1-font-tag: 20px;      /* 「公認サークル」のサイズ */
+  --pc1-font-desc: 16px;      /* 説明文のサイズ */
+  
+  --pc1-font-label: 22px;     /* 「現在の活動人数」のサイズ */
+  --pc1-font-grade: 16px;    /* 「◯年」のサイズ */
+  --pc1-font-count: 20px;    /* 「◯◯人」の数字サイズ */
+  --pc1-font-unit: 12px;     /* 「人」の単位サイズ */
+}
+
+/* --- レイアウト設定 --- */
+.pc-circle-1 {
+  width: 100%;
+  background-color: var(--pc1-bg-color);
+  padding: 10px 0 50px 0;
+}
+
+.pc-circle-1 .pc1-wrapper {
+  width: 100%;
+}
+
+.pc-circle-1 .pc1-visual-box {
+  width: 100%;
+  padding: 0 var(--pc1-img-side-gap);
+  box-sizing: border-box;
+  margin-bottom: 25px;
+}
+
+.pc-circle-1 .pc1-visual-box img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--pc1-img-radius);
+}
+
+.pc-circle-1 .pc1-content-body {
+  padding: 0 24px;
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 20px;
+  align-items: flex-start; /* 上端を揃える */
+}
+
+/* 比率 4:1 */
+.pc-circle-1 .pc1-text-group {
+  flex: 4;
+  min-width: 320px;
+}
+
+.pc-circle-1 .pc1-member-box {
+  flex: 1;
+  min-width: 160px;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* --- テキスト詳細（変数適用） --- */
+.pc-circle-1 .pc1-profile-intro {
+  margin-bottom: 12px;
+}
+
+.pc-circle-1 .pc1-found-date {
+  font-size: var(--pc1-font-found);
+  font-weight: 700;
+  margin: 0 0 2px 0;
+  line-height: 1.2;
+  color: var(--pc1-main-text);
+}
+
+.pc-circle-1 .pc1-official-tag {
+  font-size: var(--pc1-font-tag);
+  font-weight: 700;
+  color: var(--pc1-accent-color);
+  margin: 0;
+}
+
+.pc-circle-1 .pc1-description {
+  font-size: var(--pc1-font-desc);
+  line-height: 1.7;
+  color: var(--pc1-sub-text);
+  margin: 0;
+}
+
+/* --- 人数エリア詳細（変数適用） --- */
+.pc-circle-1 .pc1-member-label {
+  font-size: var(--pc1-font-label);
+  font-weight: 700;
+  color: var(--pc1-sub-text);
+  margin: 0 0 10px 0;
+  line-height: 1.2;
+}
+
+.pc-circle-1 .pc1-member-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+
+.pc-circle-1 .pc1-member-item,
+.pc-circle-1 .pc1-total-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.pc-circle-1 .pc1-grade {
+  font-size: var(--pc1-font-grade);
+  color: var(--pc1-sub-text);
+  margin-bottom: 2px;
+}
+
+.pc-circle-1 .pc1-count {
+  font-size: var(--pc1-font-count);
+  font-weight: 800;
+  color: var(--pc1-main-text);
+}
+
+.pc-circle-1 .pc1-count small {
+  font-size: var(--pc1-font-unit);
+  font-weight: 500;
+  margin-left: 1px;
+}
+
+.pc-circle-1 .pc1-total-item .pc1-count {
+  color: var(--pc1-accent-color);
+}
+
+/* --- スマホ表示 --- */
+@media (max-width: 900px) {
+  .pc-circle-1 .pc1-content-body {
+    flex-direction: column;
+    gap: 25px;
+  }
+  .pc-circle-1 .pc1-text-group,
+  .pc-circle-1 .pc1-member-box {
+    flex: none;
+    width: 100%;
+  }
+  .pc-circle-1 .pc1-member-box {
+    border-top: 1px solid var(--pc1-line-color) !important;
+    padding-top: 20px !important;
+  }
+}

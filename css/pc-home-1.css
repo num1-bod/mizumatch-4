@@ -1,0 +1,127 @@
+/* ======================================================
+   pc-home-1 修正版：細かな波線デザイン
+   ====================================================== */
+:root {
+  --ph1-bg-color: #f0f7ff; 
+  --ph1-main-color: #1F5199;
+  --ph1-container-max-width: 1000px; 
+  --ph1-img-radius: 12px;
+  --ph1-btn-bg-color: #ffffff;
+  --ph1-btn-radius: 10px;
+}
+
+.pc-home-1 {
+  position: relative;
+  width: 100%;
+  background-color: var(--ph1-bg-color);
+  padding: 60px 20px; /* 上下の余白調整 */
+  margin: 60px 0;
+  box-sizing: border-box;
+}
+
+/* 共通：波線の基本設定 */
+.pc-home-1::before,
+.pc-home-1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 40px; /* 波の高さを少し低くしてシャープに */
+  /* 細かな波のSVGデータ（2つの山があるデザイン） */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5,73.84-4.36,147.54,16.88,218.2,35.26,69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%23f0f7ff'/%3E%3C/svg%3E");
+  background-repeat: repeat-x; /* 横に繰り返す */
+  background-size: 800px 40px; /* ここを小さくすると波がさらに細かくなります */
+  z-index: 1;
+}
+
+/* 上部の波（反転させて上に配置） */
+.pc-home-1::before {
+  top: -39px; /* 隙間埋め */
+  transform: rotate(180deg);
+}
+
+/* 下部の波 */
+.pc-home-1::after {
+  bottom: -39px;
+}
+
+/* 見出しエリア */
+.pc-home-1 .heading#sp-news {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 30px;
+}
+
+.pc-home-1 .heading#sp-news h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--ph1-main-color);
+  font-weight: bold;
+}
+
+/* コンテンツエリア */
+.pc-home-1 .ph1-container {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between;
+  max-width: var(--ph1-container-max-width);
+  margin: 0 auto;
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.pc-home-1 .ph1-visual-box { flex: 1.2; }
+.pc-home-1 .ph1-visual-box img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--ph1-img-radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.pc-home-1 .ph1-article-body { flex: 1; }
+.pc-home-1 .ph1-button-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pc-home-1 .ph1-intro-text, .pc-home-1 .ph1-thanks-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.pc-home-1 .ph1-btn-anchor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 260px;
+  padding: 14px 10px;
+  margin-bottom: 10px;
+  background-color: var(--ph1-btn-bg-color);
+  color: var(--ph1-main-color);
+  border: 2px solid var(--ph1-main-color);
+  border-radius: var(--ph1-btn-radius);
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s ease-in-out;
+}
+
+.pc-home-1 .ph1-btn-anchor:hover {
+  background-color: var(--ph1-main-color);
+  color: #fff;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+  .pc-home-1 .ph1-container { flex-direction: column; }
+  .pc-home-1::before, .pc-home-1::after {
+    background-size: 500px 30px; /* スマホではさらに波を細かく */
+    height: 30px;
+  }
+}

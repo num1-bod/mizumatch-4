@@ -1,0 +1,97 @@
+/* ======================================================
+   tab-home-2 カスタマイズ設定（元画像比率維持版）
+   ====================================================== */
+:root {
+  --th2-section-pb: 50px;
+  --th2-container-max-width: 1000px;
+  --th2-side-padding: 20px;
+  --th2-img-radius: 12px;
+  --th2-main-color: #1F5199;
+}
+
+.tab-home-2 {
+  width: 100%;
+  padding: 20px var(--th2-side-padding) var(--th2-section-pb);
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+.tab-home-2 .th2-container {
+  display: flex;
+  align-items: center; /* stretchからcenterに変更（高さが違う場合の中央揃え） */
+  justify-content: center;
+  max-width: var(--th2-container-max-width);
+  margin: 0 auto;
+  gap: 20px; 
+}
+
+/* 左側：画像ボックス（元の比率を維持） */
+.tab-home-2 .th2-image-box {
+  flex: 1.5;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--th2-img-radius);
+  /* min-heightを削除し、中身の画像に合わせる */
+}
+
+.tab-home-2 .th2-image-box img {
+  /* position: absoluteを解除 */
+  position: static; 
+  width: 100%;
+  height: auto; /* 高さを自動にすることで元画像の比率を維持 */
+  display: block;
+  object-fit: contain; /* 画像を切り取らずに表示 */
+}
+
+/* 右側：コンテンツエリア */
+.tab-home-2 .th2-content-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  text-align: left;
+}
+
+.tab-home-2 .th2-text {
+  color: #444;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.8;
+  margin: 0 0 24px 0;
+}
+
+.tab-home-2 .th2-btn-anchor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 280px;
+  padding: 14px 0;
+  background-color: #fff;
+  color: var(--th2-main-color);
+  border: 2px solid var(--th2-main-color);
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+  .tab-home-2 .th2-container {
+    flex-direction: column;
+    gap: 20px; /* スマホ時の画像と文字の間の余白 */
+  }
+  .tab-home-2 .th2-image-box {
+    width: 100%;
+    /* aspect-ratioを削除 */
+    border-radius: var(--th2-img-radius);
+  }
+  .tab-home-2 .th2-content-side {
+    text-align: center;
+    padding: 10px 20px;
+  }
+  .tab-home-2 .th2-button-area {
+    justify-content: center;
+  }
+}

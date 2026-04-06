@@ -1,0 +1,152 @@
+/* ======================================================
+   pc-home-3 カスタマイズ（細かな波線・背景追加版）
+   ====================================================== */
+:root {
+  --ph3-bg-color: #f0f7ff;         /* 背景色（pc-home-1と統一） */
+  --ph3-main-color: #1F5199;
+  --ph3-side-padding: 20px;
+  --ph3-card-width: 280px;
+  --ph3-card-gap: 20px;
+  --ph3-card-bg: #ffffff;
+  --ph3-card-radius: 12px;
+  --ph3-card-shadow: 0 5px 15px rgba(0,0,0,0.06);
+
+  --ph3-title-size: 1.1rem;
+  --ph3-title-color: #333333;
+  --ph3-desc-size: 0.85rem;
+  --ph3-desc-color: #666666;
+  --ph3-date-size: 0.75rem;
+  --ph3-date-color: #999999;
+}
+
+.pc-home-3 {
+  position: relative;
+  width: 100%;
+  background-color: var(--ph3-bg-color);
+  /* 上下の波線分の余白を確保 */
+  padding: 80px 0; 
+  margin: 60px 0;
+  box-sizing: border-box;
+  overflow: visible; /* 波線を外に見せるため */
+}
+
+/* 波線の基本設定（pc-home-1と同じ細かな波） */
+.pc-home-3::before,
+.pc-home-3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5,73.84-4.36,147.54,16.88,218.2,35.26,69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%23f0f7ff'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 800px 40px;
+  z-index: 1;
+}
+
+/* 上部の波（反転） */
+.pc-home-3::before {
+  top: -39px;
+  transform: rotate(180deg);
+}
+
+/* 下部の波 */
+.pc-home-3::after {
+  bottom: -39px;
+}
+
+/* 見出しの調整 */
+.pc-home-3 .heading#pc-home {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 30px;
+}
+
+.pc-home-3 .heading#pc-home h2 {
+  font-size: 1.6rem;
+  color: var(--ph3-main-color);
+  margin: 0;
+}
+
+/* 横スクロールエリア */
+.pc-home-3 .ph3-gallery-viewport {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 10px var(--ph3-side-padding) 30px; 
+  gap: var(--ph3-card-gap);
+  position: relative;
+  z-index: 2; /* 波より上にする */
+  
+  /* スクロールバー非表示（モダンなデザイン用） */
+  scrollbar-width: none;
+}
+.pc-home-3 .ph3-gallery-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+/* 個別カード */
+.pc-home-3 .ph3-item-unit {
+  flex: 0 0 var(--ph3-card-width);
+  scroll-snap-align: center;
+  background: var(--ph3-card-bg);
+  border-radius: var(--ph3-card-radius);
+  box-shadow: var(--ph3-card-shadow);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+}
+
+.pc-home-3 .ph3-item-unit:hover {
+  transform: translateY(-5px);
+}
+
+.pc-home-3 .ph3-img-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.pc-home-3 .ph3-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pc-home-3 .ph3-body {
+  padding: 15px;
+}
+
+.pc-home-3 .ph3-item-title {
+  font-size: var(--ph3-title-size);
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.pc-home-3 .ph3-item-desc {
+  font-size: var(--ph3-desc-size);
+  color: var(--ph3-desc-color);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.pc-home-3 .ph3-item-date {
+  font-size: var(--ph3-date-size);
+  color: var(--ph3-date-color);
+  text-align: right;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+  .pc-home-3::before, .pc-home-3::after {
+    background-size: 500px 30px;
+    height: 30px;
+  }
+  .pc-home-3::before { top: -29px; }
+  .pc-home-3::after { bottom: -29px; }
+}

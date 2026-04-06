@@ -1,0 +1,126 @@
+/* ======================================================
+   sp-circle-1 カスタマイズ設定
+   ====================================================== */
+:root {
+  --sc1-bg-color: transparent;    /* セクション背景をなしに */
+  --sc1-main-text: #111111;
+  --sc1-sub-text: #555555;
+  --sc1-accent-color: #1F5199;    /* 指定の青色に変更 */
+  
+  --sc1-img-radius: 12px;
+  --sc1-img-side-gap: 15px;
+  
+  --sc1-line-color: #eeeeee;      /* 境界線の色 */
+  --sc1-member-bg: transparent;   /* 人数エリアの背景もなしに */
+}
+
+.sp-circle-1 {
+  width: 100%;
+  background-color: var(--sc1-bg-color);
+  padding: 10px 0 50px 0;
+}
+
+.sp-circle-1 .sc1-wrapper {
+  width: 100%;
+}
+
+/* 画像エリア */
+.sp-circle-1 .sc1-visual-box {
+  width: 100%;
+  padding: 0 var(--sc1-img-side-gap);
+  box-sizing: border-box;
+  margin-bottom: 25px;
+}
+
+.sp-circle-1 .sc1-visual-box img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--sc1-img-radius);
+  border: none !important;
+}
+
+/* テキストエリア */
+.sp-circle-1 .sc1-content-body {
+  padding: 0 24px;
+  text-align: left;
+}
+
+/* 創立・公認情報 */
+.sp-circle-1 .sc1-profile-intro {
+  margin-bottom: 15px;
+}
+
+.sp-circle-1 .sc1-found-date {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 2px 0;
+  color: var(--sc1-main-text);
+}
+
+.sp-circle-1 .sc1-official-tag {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--sc1-accent-color); /* 指定の青色 */
+  margin: 0;
+}
+
+/* 活動概要 */
+.sp-circle-1 .sc1-description {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--sc1-sub-text);
+  margin-bottom: 30px;
+}
+
+/* 活動人数エリア：背景なし・線のみのミニマルスタイル */
+.sp-circle-1 .sc1-member-box {
+  background-color: var(--sc1-member-bg);
+  border-top: 1px solid var(--sc1-line-color);
+  padding-top: 20px;
+}
+
+.sp-circle-1 .sc1-member-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--sc1-sub-text);
+  margin: 0 0 15px 0;
+}
+
+.sp-circle-1 .sc1-member-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 25px; /* 要素間の間隔 */
+}
+
+.sp-circle-1 .sc1-member-item,
+.sp-circle-1 .sc1-total-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* すべて左揃えに統一 */
+}
+
+.sp-circle-1 .sc1-grade {
+  font-size: 0.75rem;
+  color: var(--sc1-sub-text);
+  margin-bottom: 2px;
+}
+
+.sp-circle-1 .sc1-count {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--sc1-main-text);
+}
+
+.sp-circle-1 .sc1-count small {
+  font-size: 0.7rem;
+  font-weight: 500;
+  margin-left: 1px;
+}
+
+/* 合計人数だけ青色で強調 */
+.sp-circle-1 .sc1-total-item .sc1-count {
+  color: var(--sc1-accent-color);
+}
