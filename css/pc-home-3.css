@@ -1,0 +1,138 @@
+/* ======================================================
+   pc-home-3 カスタマイズ設定
+   ====================================================== */
+:root {
+  /* 全体のレイアウト */
+  --ph3-padding: 0px;
+  --ph3-side-padding: 20px;
+  --ph3-card-width: 280px;         /* カードの横幅 */
+  --ph3-card-gap: 20px;
+  --ph3-card-bg: #ffffff;
+  --ph3-card-radius: 12px;
+  --ph3-card-shadow: 0 5px 15px rgba(0,0,0,0.06);
+
+  /* 画像エリアの設定 */
+  --ph3-img-aspect: 16 / 9;
+  --ph3-img-bg: #ffffff;           /* 画像がない時の背景色 */
+
+  /* 文字設定 */
+  --ph3-title-size: 1.1rem;
+  --ph3-title-color: #333333;
+  --ph3-desc-size: 0.85rem;
+  --ph3-desc-color: #666666;
+  --ph3-date-size: 0.75rem;
+  --ph3-date-color: #999999;
+
+  /* スライドバー（スクロールバー）の色 */
+  --ph3-bar-track-color: #f0f0f0;  
+  --ph3-bar-thumb-color: #cccccc;  
+}
+
+/* ======================================================
+   構造
+   ====================================================== */
+
+.pc-home-3 {
+  padding: var(--ph3-padding);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* 横スクロールエリア */
+.pc-home-3 .ph3-gallery-viewport {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  
+  padding: 10px var(--ph3-side-padding) 25px; 
+  gap: var(--ph3-card-gap);
+  
+  /* スクロールバーのデザイン */
+  scrollbar-width: thin;
+  scrollbar-color: var(--ph3-bar-thumb-color) var(--ph3-bar-track-color);
+}
+
+.pc-home-3 .ph3-gallery-viewport::-webkit-scrollbar {
+  height: 4px;
+}
+.pc-home-3 .ph3-gallery-viewport::-webkit-scrollbar-track {
+  background: var(--ph3-bar-track-color);
+  border-radius: 10px;
+}
+.pc-home-3 .ph3-gallery-viewport::-webkit-scrollbar-thumb {
+  background: var(--ph3-bar-thumb-color);
+  border-radius: 10px;
+}
+
+/* 個別アイテム（カード） */
+.pc-home-3 .ph3-item-unit {
+  flex: 0 0 var(--ph3-card-width);
+  scroll-snap-align: center;
+  background: var(--ph3-card-bg);
+  border-radius: var(--ph3-card-radius);
+  box-shadow: var(--ph3-card-shadow);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pc-home-3 .ph3-item-unit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.pc-home-3 .ph3-item-unit:active {
+  transform: translateY(2px);
+}
+
+/* 画像エリア */
+.pc-home-3 .ph3-img-wrap {
+  width: 100%;
+  aspect-ratio: var(--ph3-img-aspect);
+  background-color: var(--ph3-img-bg);
+  overflow: hidden;
+  display: block;
+}
+
+.pc-home-3 .ph3-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* テキストエリア */
+.pc-home-3 .ph3-body {
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.pc-home-3 .ph3-item-title {
+  font-size: var(--ph3-title-size);
+  color: var(--ph3-title-color);
+  margin: 0 0 10px 0;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.pc-home-3 .ph3-item-desc {
+  font-size: var(--ph3-desc-size);
+  color: var(--ph3-desc-color);
+  margin: 0 0 18px 0;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.pc-home-3 .ph3-item-date {
+  font-size: var(--ph3-date-size);
+  color: var(--ph3-date-color);
+  margin: 0;
+  text-align: right;
+}

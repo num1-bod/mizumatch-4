@@ -1,0 +1,67 @@
+/* =============================================
+   MIZUMATCH Header Animation Effects
+   ============================================= */
+
+/* 1. サイドメニューの展開アニメーション（PC/タブレット） */
+.side-menu {
+  /* 既存の transition を上書きし、より滑らかなイージングを適用 */
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.4s ease !important;
+  opacity: 0;
+}
+
+.side-menu.active {
+  opacity: 1;
+}
+
+/* 2. メニュー内リスト項目の時間差フェードイン */
+.side-menu.active .side-menu-list > li {
+  animation: headerFadeUp 0.5s ease forwards;
+  opacity: 0;
+}
+
+/* 各項目に少しずつ遅延をつける（1番目から8番目まで） */
+.side-menu.active .side-menu-list > li:nth-child(1) { animation-delay: 0.1s; }
+.side-menu.active .side-menu-list > li:nth-child(2) { animation-delay: 0.15s; }
+.side-menu.active .side-menu-list > li:nth-child(3) { animation-delay: 0.2s; }
+.side-menu.active .side-menu-list > li:nth-child(4) { animation-delay: 0.25s; }
+.side-menu.active .side-menu-list > li:nth-child(5) { animation-delay: 0.3s; }
+.side-menu.active .side-menu-list > li:nth-child(6) { animation-delay: 0.35s; }
+.side-menu.active .side-menu-list > li:nth-child(7) { animation-delay: 0.4s; }
+.side-menu.active .side-menu-list > li:nth-child(8) { animation-delay: 0.45s; }
+
+@keyframes headerFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 3. メインリンクの下線アニメーション (ホバー時) */
+.menu-main-link::after {
+  /* 初期状態の幅を 0 にしてアニメーションさせる場合 */
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-main-link:hover::after {
+  width: 100% !important; /* ホバー時に線を伸ばす */
+}
+
+/* 4. サブリスト項目のホバーアニメーション */
+.sub-list li a {
+  display: inline-block;
+  transition: transform 0.2s ease, color 0.2s ease !important;
+}
+
+.sub-list li a:hover {
+  transform: translateX(5px); /* 右に少しズレる動き */
+}
+
+/* 5. ハンバーガーアイコンの変形（JSでのクラス切り替えがある場合用） */
+.menu-trigger span {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

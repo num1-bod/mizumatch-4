@@ -1,0 +1,87 @@
+:root {
+  --th4-padding: 40px 20px;            /* 上下の余白を広めに確保 */
+  --th4-desc-color: #555555;
+  --th4-desc-size: 1.05rem;            /* 文字サイズをわずかに大きく */
+  --th4-grid-gap: 16px;                /* アイテム間の隙間を広めに */
+  --th4-item-radius: 12px;
+  --th4-item-height: 80px;             /* タブレットで見栄えが良い高さ */
+  --color-instagram: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  --color-x: #000000;
+  --color-facebook: #1877f2;
+  --color-tiktok: #000000;
+}
+
+.tab-home-4 {
+  padding: var(--th4-padding);
+  background-color: #f9f9f9;           /* セクションの区切りを明確に */
+}
+
+.tab-home-4 .th4-container {
+  max-width: 900px;                    /* タブレット用に幅を拡張 */
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tab-home-4 .th4-section-desc {
+  font-size: var(--th4-desc-size);
+  margin: 0 0 40px 0;
+  color: var(--th4-desc-color);
+  line-height: 1.8;
+}
+
+.tab-home-4 .th4-grid {
+  display: grid;
+  /* タブレット向けに4列（横一列）に変更 */
+  grid-template-columns: repeat(4, 1fr); 
+  gap: var(--th4-grid-gap);
+}
+
+.tab-home-4 .th4-item {
+  display: flex;
+  flex-direction: column;              /* アイコンと文字を上下に配置（タブレットで一般的） */
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  min-height: 100px;                   /* 正方形に近い形に */
+  padding: 15px 10px;
+  border-radius: var(--th4-item-radius);
+  text-decoration: none;
+  color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tab-home-4 .th4-item:hover {
+  transform: translateY(-5px);         /* ホバー演出を追加 */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.tab-home-4 .th4-icon-box {
+  width: 28px;                         /* アイコンを少し大きく */
+  height: 28px;
+  margin-bottom: 10px;                 /* 下の文字との間隔 */
+}
+
+.tab-home-4 .th4-icon-box img {
+  width: 100%;
+  filter: brightness(0) invert(1);
+}
+
+.tab-home-4 .th4-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.tab-home-4 .th4-instagram { background: var(--color-instagram); }
+.tab-home-4 .th4-x         { background: var(--color-x); }
+.tab-home-4 .th4-facebook  { background: var(--color-facebook); }
+.tab-home-4 .th4-tiktok    { 
+  background: var(--color-tiktok);
+  box-shadow: 2px 2px 0px #fe2c55, -2px -2px 0px #25f4ee;
+}
+
+/* 画面が非常に狭いタブレット（縦持ちなど）向けの微調整 */
+@media (max-width: 768px) {
+  .tab-home-4 .th4-grid {
+    grid-template-columns: repeat(2, 1fr); /* 狭い時は2列に戻す */
+  }
+}
