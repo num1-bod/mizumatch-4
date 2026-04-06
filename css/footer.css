@@ -1,0 +1,204 @@
+/* ============================================================
+   0. 設定（ここを書き換えるだけで全体が変わります）
+   ============================================================ */
+:root {
+  /* カラー設定 */
+  --ft-bg: #E5ECF2;              /* フッター背景色 */
+  --ft-text: #424245;            /* 通常テキスト色 */
+  --ft-link: #424245;            /* リンク色 */
+  --ft-accent: #1F5199;          /* アクセント（サークル・見出し・線） */
+  --ft-border-color: #737375;    /* 区切り線の色 */
+
+  /* サイズ設定（文字） */
+  --ft-font-main: 12px;          /* 基本文字サイズ */
+  --ft-font-title: 20px;         /* サークル名のサイズ */
+  --ft-font-column-h: 14px;      /* 見出しのサイズ */
+  --ft-font-note: 11px;          /* 注釈のサイズ */
+
+  /* サイズ設定（アイコン・線） */
+  --ft-max-width: 1300px;        /* フッターの最大幅 */
+  --ft-logo-size: 36px;          /* アイコンの大きさ */
+  --ft-logo-radius: 50%;         /* アイコンの丸み（50%で円形） */
+  --ft-line-weight: 2px;         /* 見出しの下線の太さ */
+  --ft-line-width: 80%;          /* 見出しの下線の長さ(%) */
+  --ft-border-weight: 1px;       /* セクション区切り線の太さ */
+}
+
+/* ============================================================
+   1. フッター本体
+   ============================================================ */
+.apple-footer {
+  background-color: var(--ft-bg);
+  color: var(--ft-text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: var(--ft-font-main);
+  line-height: 1.5;
+  padding: 0 22px;
+  border-top: var(--ft-border-weight) solid var(--ft-border-color);
+}
+
+.footer-content {
+  max-width: var(--ft-max-width);
+  margin: 0 auto;
+  padding: 40px 0 60px 0;
+}
+
+/* ブランドロゴ */
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  border-bottom: var(--ft-border-weight) solid var(--ft-border-color);
+}
+
+.brand-logo .logo-img {
+  width: var(--ft-logo-size);
+  height: var(--ft-logo-size);
+  object-fit: cover;
+  border-radius: var(--ft-logo-radius);
+  display: block;
+}
+
+.brand-name {
+  font-size: var(--ft-font-title);
+  font-weight: 700;
+  color: var(--ft-accent);
+  letter-spacing: -0.01em;
+}
+
+/* ナビゲーション */
+.footer-directory {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.directory-column { flex: 1; }
+
+.column-title {
+  font-size: var(--ft-font-column-h);
+  font-weight: 700;
+  color: var(--ft-accent);
+  display: block;
+  margin-bottom: 15px;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+/* デスクトップ用下線 */
+.column-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: var(--ft-line-width);
+  height: var(--ft-line-weight);
+  background-color: var(--ft-accent);
+  border-radius: var(--ft-line-weight);
+}
+
+.column-list { list-style: none; padding: 0; margin: 0; }
+.column-list li { margin-bottom: 10px; }
+.column-list a {
+  color: var(--ft-link);
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+.column-list a:hover { 
+  color: var(--ft-accent); 
+  text-decoration: underline; 
+}
+
+/* 注釈エリア */
+.footer-footnotes {
+  border-bottom: var(--ft-border-weight) solid var(--ft-border-color);
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+.footer-footnotes ul { list-style: none; padding: 0; margin: 0; }
+.footer-footnotes li {
+  margin-bottom: 8px;
+  font-size: var(--ft-font-note);
+  color: #86868b;
+  text-align: left;
+}
+
+/* リーガル */
+.footer-legal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding-top: 20px;
+}
+.legal-links a {
+  margin-left: 15px;
+  padding-left: 15px;
+  border-left: var(--ft-border-weight) solid var(--ft-border-color);
+  color: var(--ft-link);
+  text-decoration: none;
+}
+.legal-links a:first-child { border-left: none; margin-left: 0; }
+.country { font-weight: 600; }
+
+.toggle-check { position: absolute; opacity: 0; pointer-events: none; }
+
+/* ============================================================
+   2. モバイル対応
+   ============================================================ */
+@media screen and (max-width: 600px) {
+  .footer-directory { flex-direction: column; }
+  .directory-column { border-bottom: var(--ft-border-weight) solid var(--ft-border-color); }
+  
+  .column-title {
+    padding: 15px 0;
+    margin: 0;
+    cursor: pointer;
+    font-size: var(--ft-font-column-h);
+    position: relative;
+  }
+
+  .column-title::after { display: none; }
+  
+  .column-title::before {
+    content: "+";
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: var(--ft-accent);
+    transition: transform 0.3s ease;
+  }
+  
+  .column-list {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: 
+      max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+  
+  .toggle-check:checked ~ .column-list {
+    max-height: 600px;
+    padding-bottom: 20px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .toggle-check:checked ~ .column-title::before {
+    content: "−";
+    transform: translateY(-50%) rotate(180deg);
+  }
+  
+  .footer-legal { flex-direction: column; align-items: flex-start; }
+  .legal-links { margin-top: 10px; }
+  .legal-links a { margin-left: 0; margin-right: 15px; padding: 0; border: none; }
+}

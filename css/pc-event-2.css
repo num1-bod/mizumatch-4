@@ -1,0 +1,82 @@
+:root {
+  --pe2-main-blue: #1F5199;
+  --pe2-text-black: #333333;
+  --pe2-border-color: #CCCCCC;
+  --pe2-side-padding: 24px;
+}
+
+.pc-event-2 {
+  width: 100%;
+  padding: 60px 0; /* 上下の余白 */
+}
+
+/* 左右並びにするための親要素の設定 */
+.pe2-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;          /* 左右に並べる */
+  align-items: flex-start; /* 上揃え */
+  gap: 40px;              /* 地図と情報の間の溝 */
+  padding: 0 20px;
+}
+
+/* 左側：地図エリア */
+.pe2-map-box {
+  flex: 1.2;              /* 地図を少し広めに（比率） */
+  margin: 0;              /* マージンをリセット */
+  line-height: 0;
+}
+
+.pe2-map-iframe {
+  width: 100%;
+  height: 450px;          /* 左右分割時は少し高めが綺麗です */
+  border-radius: 15px;
+  border: 1px solid var(--pe2-border-color);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+/* 右側：テキスト情報エリア */
+.pe2-content-body {
+  flex: 1;                /* テキストエリアの比率 */
+  padding: 0;             /* パディングを調整 */
+}
+
+.pe2-info-section {
+  margin-bottom: 25px;
+}
+
+.pe2-title {
+  font-size: 1.1rem;
+  color: var(--pe2-main-blue);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.pe2-main-text {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--pe2-text-black);
+  margin-bottom: 5px;
+}
+
+.pe2-address {
+  font-size: 0.95rem;
+  color: var(--pe2-main-blue);
+  text-decoration: underline;
+}
+
+.pe2-border {
+  border: none;
+  border-top: 1px solid var(--pe2-border-color);
+  margin: 20px 0;
+}
+
+/* 【重要】画面幅が狭い時（タブレット・スマホ）は縦並びに戻す */
+@media (max-width: 768px) {
+  .pe2-wrapper {
+    flex-direction: column; 
+  }
+  .pe2-map-iframe {
+    height: 300px;
+  }
+}

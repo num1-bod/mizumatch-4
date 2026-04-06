@@ -1,0 +1,128 @@
+:root {
+  --te1-main-blue: #1F5199;
+  --te1-text-black: #111111;
+  --te1-line-color: #CCCCCC;
+  --te1-sub-red: #d93025;
+  --te1-img-radius: 12px;
+}
+
+/* --- 全体レイアウト --- */
+.tab-event-1 .te1-wrapper {
+  padding: 25px 15px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* --- メイン画像 --- */
+.tab-event-1 .te1-visual-box {
+  width: 100%;
+  margin-bottom: 30px;
+}
+.tab-event-1 .te1-visual-box img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+  border-radius: var(--te1-img-radius);
+  display: block;
+}
+
+/* --- 左右分割テーブルエリア --- */
+.tab-event-1 .te1-content-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.tab-event-1 .te1-col-left, .tab-event-1 .te1-col-right {
+  flex: 1;
+  min-width: 320px;
+}
+
+/* --- テーブルスタイル（縦幅統一） --- */
+.tab-event-1 .te1-info-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid var(--te1-line-color);
+  table-layout: fixed; /* 列幅を固定して安定させます */
+}
+
+.tab-event-1 tr {
+  border-bottom: 1px solid var(--te1-line-color);
+  height: 90px; /* ★各行の縦幅を統一（中身に合わせて調整してください） */
+}
+
+.tab-event-1 th.te1-tag {
+  width: 100px;
+  padding: 10px 0 10px 10px;
+  vertical-align: middle; /* 中央配置 */
+  text-align: left;
+}
+
+.tab-event-1 th.te1-tag span {
+  display: inline-block;
+  color: var(--te1-main-blue);
+  font-size: 0.75rem;
+  font-weight: 800;
+  border: 1.5px solid var(--te1-main-blue);
+  border-radius: 20px;
+  padding: 4px 15px; 
+  background-color: #ffffff;
+}
+
+.tab-event-1 td {
+  padding: 15px 10px;
+  vertical-align: middle; /* ★縦方向の中央に配置 */
+}
+
+.tab-event-1 .te1-val {
+  font-size: 0.95rem;
+  color: var(--te1-text-black);
+  line-height: 1.4;
+  display: block;
+}
+
+.tab-event-1 .te1-sub-val {
+  font-size: 0.75rem;
+  color: var(--te1-sub-red);
+  display: block;
+  margin-top: 2px;
+  line-height: 1.3;
+}
+
+/* --- 誘導テキスト --- */
+.tab-event-1 .te1-lead-text {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--te1-text-black);
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+/* --- ボタンエリア --- */
+.tab-event-1 .te1-button-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
+.tab-event-1 .Button-MainWhite-TextBlue button {
+  width: 340px;
+  max-width: 100%;
+  padding: 15px 0;
+  background-color: #fff;
+  color: var(--te1-main-blue);
+  border: 3px solid var(--te1-main-blue); 
+  border-radius: 50px;
+  font-weight: 600;        
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-event-1 .Button-MainWhite-TextBlue button:hover {
+  background-color: var(--te1-main-blue);
+  color: #fff;
+}

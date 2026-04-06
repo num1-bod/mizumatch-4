@@ -1,0 +1,158 @@
+:root {
+  /* --- 共通設定 (Base) --- */
+  --tab-main-color: #1F5199;      
+  --tab-bg-color: #E5ECF2;        
+  --tab-text-color: #555555;      
+  --tab-inactive-line-color: #CCC; 
+  --max-width: 1300px;
+  --tab-transition: 0.3s;
+  --tab-line-weight: 3px;
+  --tab-line-bottom: 0px;
+  --tab-padding-x: 10px;
+
+  /* --- PC用の設定 (Default) --- */
+  --pc-tab-h: 60px;
+  --pc-tab-font-size: 15px;
+  --pc-tab-line-width: 80%;
+
+  /* --- タブレット用の設定 --- */
+  --tablet-tab-h: 50px;
+  --tablet-tab-font-size: 15px;
+  --tablet-tab-line-width: 80%;
+
+  /* --- スマホ用の設定 --- */
+  --sp-tab-h: 50px;
+  --sp-tab-font-size: 13px;
+  --sp-tab-line-width: 90%;
+
+  /* --- 動的に切り替わる変数（初期値はPC） --- */
+  --current-tab-h: var(--pc-tab-h);
+  --current-tab-font-size: var(--pc-tab-font-size);
+  --current-tab-line-width: var(--pc-tab-line-width);
+}
+
+/* --- メディアクエリ：変数の中身だけを切り替え --- */
+
+/* タブレット (601px〜1200px) */
+@media screen and (max-width: 1200px) and (min-width: 601px) {
+  :root {
+    --current-tab-h: var(--tablet-tab-h);
+    --current-tab-font-size: var(--tablet-tab-font-size);
+    --current-tab-line-width: var(--tablet-tab-line-width);
+  }
+}
+
+/* スマホ (〜600px) */
+@media screen and (max-width: 600px) {
+  :root {
+    --current-tab-h: var(--sp-tab-h);
+    --current-tab-font-size: var(--sp-tab-font-size);
+    --current-tab-line-width: var(--sp-tab-line-width);
+  }
+}
+
+/* --- スタイル定義 (デザイン変更なし) --- */
+
+.tab-group, .tab-content, .pc-content-group, .tablet-content-group, .sp-content-group {
+  display: none;
+}
+
+.fixed-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background-color: var(--tab-bg-color);
+}
+
+.tab-group {
+  width: 100%; max-width: var(--max-width);
+  margin: 0 auto; padding: 0; list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tab-link {
+  flex: 1; 
+  height: var(--current-tab-h); /* 動的変数を使用 */
+  padding: 0 var(--tab-padding-x);
+  background: transparent; 
+  border: none; 
+  cursor: pointer;
+  position: relative; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  font-size: var(--current-tab-font-size); /* 動的変数を使用 */
+  color: var(--tab-text-color);
+  transition: all var(--tab-transition);
+  white-space: nowrap;
+}
+
+.tab-link::after {
+  content: ""; 
+  position: absolute; 
+  bottom: var(--tab-line-bottom);
+  left: calc((100% - var(--current-tab-line-width)) / 2); /* 動的変数を使用 */
+  width: var(--current-tab-line-width); /* 動的変数を使用 */
+  border-bottom: var(--tab-line-weight) solid var(--tab-inactive-line-color);
+}
+
+.tab-link.active { color: var(--tab-main-color); font-weight: bold; }
+.tab-link.active::after { border-bottom-color: var(--tab-main-color); }
+
+/* 表示・非表示の制御のみメディアクエリに残す */
+@media screen and (min-width: 1201px) {
+  .pc-tabs { display: flex !important; }
+  .pc-content-group { display: block !important; }
+  .tablet-tabs, .sp-tabs, .tablet-content-group, .sp-content-group { display: none !important; }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 601px) {
+  .tablet-tabs { display: flex !important; }
+  .tablet-content-group { display: block !important; }
+  .pc-tabs, .sp-tabs, .pc-content-group, .sp-content-group { display: none !important; }
+}
+
+@media screen and (max-width: 600px) {
+  .sp-tabs { display: flex !important; }
+  .sp-content-group { display: block !important; }
+  .pc-tabs, .tablet-tabs, .pc-content-group, .tablet-content-group { display: none !important; }
+}
+
+/* --- content-wrapper のデバイス別設定 (修正箇所) --- */
+
+/* 全デバイス共通のベース設定 */
+.content-wrapper {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* PC版 (1025px以上) */
+@media screen and (min-width: 1025px) {
+  .content-wrapper {
+    padding-top: 140px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0px;
+  }
+}
+
+/* タブレット版 (768px〜1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .content-wrapper {
+    padding-top: 110px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0px;
+  }
+}
+
+/* スマホ版 (767px以下) */
+@media screen and (max-width: 767px) {
+  .content-wrapper {
+    padding-top: 80px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0px;
+  }
+}

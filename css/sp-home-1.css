@@ -1,0 +1,114 @@
+/* ======================================================
+   sp-home-1 カスタマイズ設定
+   ====================================================== */
+:root {
+  /* --- 全体の余白 --- */
+  --sh1-section-pb: 40px;
+  --sh1-side-padding: 20px;
+
+  /* --- 画像の設定 --- */
+  --sh1-img-radius: 12px;
+  --sh1-img-side-gap: 15px;
+  --sh1-img-aspect: 16 / 9;
+  --sh1-img-shadow: rgba(0,0,0,0.1);
+
+  /* --- ボタンのサイズ設定 --- */
+  --sh1-btn-width-max: 250px;    /* ボタンの最大横幅 */
+  --sh1-btn-side-margin: 20px;   /* ボタン左右の最小余白 */
+  --sh1-btn-mt: 24px;            /* 画像とボタンの間の距離 */
+  --sh1-btn-pv: 12px;            /* ボタン内部の上下余白 */
+
+  /* --- ボタンの文字設定 --- */
+  --sh1-btn-text-size: 1.05rem;
+  --sh1-btn-text-weight: 700;
+  --sh1-btn-letter-spacing: 0.05em;
+  
+  /* --- ボタンの色と線 --- */
+  --sh1-main-color: #1F5199;     /* 文字と枠線の色 */
+  --sh1-btn-bg-color: #ffffff;   /* 背景色 */
+  --sh1-btn-border-width: 2px;
+  --sh1-btn-radius: 10px;
+  --sh1-btn-shadow-color: rgba(31, 81, 153, 0.15);
+
+  /* --- タップ（アクティブ）時の設定 --- */
+  --sh1-active-bg: #1F5199;
+  --sh1-active-text: #ffffff;
+  --sh1-active-scale: 0.97;
+}
+
+/* ======================================================
+   構造
+   ====================================================== */
+
+.sp-home-1 {
+  width: 100%;
+  padding-bottom: var(--sh1-section-pb);
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* 画像エリア */
+.sp-home-1 .sh1-visual-box {
+  width: 100%;
+  padding: 0 var(--sh1-img-side-gap);
+  box-sizing: border-box;
+}
+
+.sp-home-1 .sh1-visual-box img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--sh1-img-aspect);
+  object-fit: cover;
+  display: block;
+  border-radius: var(--sh1-img-radius);
+  box-shadow: 0 4px 12px var(--sh1-img-shadow);
+}
+
+/* ボタンエリア */
+.sp-home-1 .sh1-article-body {
+  padding: 0 var(--sh1-btn-side-margin);
+}
+
+.sp-home-1 .sh1-button-area {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--sh1-btn-mt);
+}
+
+/* aタグで作るボタン本体 */
+.sp-home-1 .sh1-btn-anchor {
+  /* レイアウト */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: var(--sh1-btn-width-max);
+  padding: var(--sh1-btn-pv) 0;
+  box-sizing: border-box;
+  
+  /* 装飾 */
+  background-color: var(--sh1-btn-bg-color);
+  color: var(--sh1-main-color);
+  border: var(--sh1-btn-border-width) solid var(--sh1-main-color);
+  border-radius: var(--sh1-btn-radius);
+  box-shadow: 0 6px 15px var(--sh1-btn-shadow-color);
+  
+  /* テキスト */
+  text-decoration: none;
+  font-size: var(--sh1-btn-text-size);
+  font-weight: var(--sh1-btn-text-weight);
+  letter-spacing: var(--sh1-btn-letter-spacing);
+  text-align: center;
+  
+  /* アニメーション */
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent; /* スマホの青いハイライトを消す */
+}
+
+/* タップ・クリック時の反応 */
+.sp-home-1 .sh1-btn-anchor:active {
+  background-color: var(--sh1-active-bg);
+  color: var(--sh1-active-text);
+  transform: scale(var(--sh1-active-scale));
+  box-shadow: none;
+}
