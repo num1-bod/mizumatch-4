@@ -1,0 +1,148 @@
+:root {
+  /* --- カラー設定 --- */
+  --pe1-main-blue: #1F5199;
+  --pe1-text-black: #111111;
+  --pe1-line-color: #CCCCCC;
+  --pe1-sub-red: #d93025;
+  --pe1-bg-white: #ffffff;
+
+  /* --- フォントサイズ --- */
+  --pe1-font-size-base: 20px;   /* 標準テキスト */
+  --pe1-font-size-tag: 18px;    /* タグ部分 */
+  --pe1-font-size-sub: 18px;    /* 注釈・赤文字部分 */
+  --pe1-font-size-lead: 1rem;      /* 誘導テキスト */
+  --pe1-font-size-btn: 1.1rem;     /* ボタンテキスト */
+
+  /* --- 余白・レイアウト --- */
+  --pe1-wrapper-padding: 25px 15px;
+  --pe1-content-gap: 30px;         /* カラム間の隙間 */
+  --pe1-row-height: 90px;          /* テーブルの行の高さ */
+  --pe1-img-radius: 12px;
+  --pe1-btn-radius: 50px;
+  --pe1-tag-radius: 20px;
+
+  /* --- ボーダー・線 --- */
+  --pe1-border-width-tag: 1.5px;
+  --pe1-border-width-btn: 3px;
+}
+
+/* --- 全体レイアウト --- */
+.pc-event-1 .pe1-wrapper {
+  padding: var(--pe1-wrapper-padding);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* --- メイン画像 --- */
+.pc-event-1 .pe1-visual-box {
+  width: 100%;
+  margin-bottom: 30px;
+}
+.pc-event-1 .pe1-visual-box img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+  border-radius: var(--pe1-img-radius);
+  display: block;
+}
+
+/* --- 左右分割テーブルエリア --- */
+.pc-event-1 .pe1-content-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pe1-content-gap);
+  margin-bottom: 30px;
+}
+.pc-event-1 .pe1-col-left, .pc-event-1 .pe1-col-right {
+  flex: 1;
+  min-width: 320px;
+}
+
+/* --- テーブルスタイル --- */
+.pc-event-1 .pe1-info-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid var(--pe1-line-color);
+  table-layout: fixed;
+}
+
+.pc-event-1 tr {
+  border-bottom: 1px solid var(--pe1-line-color);
+  height: var(--pe1-row-height);
+}
+
+.pc-event-1 th.pe1-tag {
+  width: 100px;
+  padding: 10px 0 10px 10px;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.pc-event-1 th.pe1-tag span {
+  display: inline-block;
+  color: var(--pe1-main-blue);
+  font-size: var(--pe1-font-size-tag);
+  font-weight: 800;
+  border: var(--pe1-border-width-tag) solid var(--pe1-main-blue);
+  border-radius: var(--pe1-tag-radius);
+  padding: 4px 15px; 
+  background-color: var(--pe1-bg-white);
+}
+
+.pc-event-1 td {
+  padding: 15px 10px;
+  vertical-align: middle;
+}
+
+.pc-event-1 .pe1-val {
+  font-size: var(--pe1-font-size-base);
+  color: var(--pe1-text-black);
+  line-height: 1.4;
+  display: block;
+}
+
+.pc-event-1 .pe1-sub-val {
+  font-size: var(--pe1-font-size-sub);
+  color: var(--pe1-sub-red);
+  display: block;
+  margin-top: 2px;
+  line-height: 1.3;
+}
+
+/* --- 誘導テキスト --- */
+.pc-event-1 .pe1-lead-text {
+  text-align: center;
+  font-size: var(--pe1-font-size-lead);
+  font-weight: 600;
+  color: var(--pe1-text-black);
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+/* --- ボタンエリア --- */
+.pc-event-1 .pe1-button-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
+.pc-event-1 .Button-MainWhite-TextBlue button {
+  width: 340px;
+  max-width: 100%;
+  padding: 15px 0;
+  background-color: var(--pe1-bg-white);
+  color: var(--pe1-main-blue);
+  border: var(--pe1-border-width-btn) solid var(--pe1-main-blue); 
+  border-radius: var(--pe1-btn-radius);
+  font-weight: 600;        
+  font-size: var(--pe1-font-size-btn);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pc-event-1 .Button-MainWhite-TextBlue button:hover {
+  background-color: var(--pe1-main-blue);
+  color: var(--pe1-bg-white);
+}

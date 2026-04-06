@@ -1,0 +1,94 @@
+/* ======================================================
+   sp-home-3 完成版デザイン（極細インジケーター）
+   ====================================================== */
+:root {
+  --sh3-side-padding: 20px;
+  --sh3-card-width: 280px;
+  --sh3-card-gap: 20px;
+  --sh3-card-bg: #ffffff;
+  --sh3-card-radius: 12px;
+  --sh3-card-shadow: 0 5px 15px rgba(0,0,0,0.06);
+
+  /* 【バーの再調整：全体表示＋極細化】 */
+  --sh3-bar-track-color: #eeeeee;  /* 全体レールの色 */
+  --sh3-bar-thumb-color: #999999;  /* 動くバーの色 */
+  --sh3-bar-thickness: 2px;        /* ★バー本体の縦幅をさらに縮小 */
+  --sh3-bar-side-margin: 20px;     /* 左右の余白をカード端に固定 */
+}
+
+/* 構造 */
+.sp-home-3 {
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* 横スクロールエリア */
+.sp-home-3 .sh3-gallery-viewport {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  
+  /* カードとバーの距離 */
+  padding: 10px var(--sh3-side-padding) 30px; 
+  gap: var(--sh3-card-gap);
+
+  /* 【全体バーを表示】背景に「消えないレール」を描画 */
+  background-image: linear-gradient(var(--sh3-bar-track-color), var(--sh3-bar-track-color));
+  background-size: calc(100% - (var(--sh3-bar-side-margin) * 2)) var(--sh3-bar-thickness);
+  background-repeat: no-repeat;
+  background-position: center bottom 14px; /* バーの高さに合わせて微調整 */
+  background-attachment: local;
+}
+
+/* --- スクロールバーのデザイン (Chrome, Safari用) --- */
+
+.sp-home-3 .sh3-gallery-viewport::-webkit-scrollbar {
+  display: block !important;
+  height: 12px; /* タッチ領域は確保しつつ見た目を細く */
+}
+
+.sp-home-3 .sh3-gallery-viewport::-webkit-scrollbar-track {
+  background: transparent !important;
+  margin: 0 var(--sh3-bar-side-margin);
+}
+
+.sp-home-3 .sh3-gallery-viewport::-webkit-scrollbar-thumb {
+  background: var(--sh3-bar-thumb-color) !important;
+  border-radius: 10px;
+  /* バーの縦幅を削るための透明枠（上下の厚みを増やす） */
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  background-clip: content-box;
+}
+
+/* 個別アイテム（カード） */
+.sp-home-3 .sh3-item-unit {
+  flex: 0 0 var(--sh3-card-width);
+  scroll-snap-align: center;
+  background: var(--sh3-card-bg);
+  border-radius: var(--sh3-card-radius);
+  box-shadow: var(--sh3-card-shadow);
+  border: 1px solid #e0e0e0 !important;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 画像エリア */
+.sp-home-3 .sh3-img-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #f9f9f9;
+  overflow: hidden;
+}
+.sp-home-3 .sh3-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* テキストエリア */
+.sp-home-3 .sh3-body { padding: 18px 16px; flex-grow: 1; }
+.sp-home-3 .sh3-item-title { font-weight: bold; margin-bottom: 10px; color: #333; line-height: 1.4; }
+.sp-home-3 .sh3-item-desc { font-size: 0.85rem; color: #666; margin-bottom: 18px; line-height: 1.5; }
+.sp-home-3 .sh3-item-date { font-size: 0.75rem; text-align: right; color: #999; }
